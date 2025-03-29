@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Designer Portfolio</title>
+    <script src="https://unpkg.com/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ff;
+            --cyber-yellow: #f0ff00;
+        }
+        body {
+            background-color: #0a0a0f;
+            font-family: 'Rajdhani', sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .cyber-glitch {
+            text-shadow: 2px 2px var(--neon-blue), -2px -2px var(--neon-pink);
+            animation: glitch 1s infinite;
+        }
+        .cyber-border {
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px var(--neon-blue), -2px -2px var(--neon-pink); }
+            25% { text-shadow: -2px 2px var(--neon-pink), 2px -2px var(--neon-blue); }
+            50% { text-shadow: 2px -2px var(--neon-blue), -2px 2px var(--neon-pink); }
+            75% { text-shadow: -2px -2px var(--neon-pink), 2px 2px var(--neon-blue); }
+            100% { text-shadow: 2px 2px var(--neon-blue), -2px -2px var(--neon-pink); }
+        }
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div id="three-container"></div>
+    
+    <nav class="fixed top-0 w-full bg-black/50 backdrop-blur-md z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-['Orbitron'] cyber-glitch">CYBER.DESIGN</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-[var(--neon-blue)] transition-colors">HOME</a>
+                <a href="#works" class="hover:text-[var(--neon-blue)] transition-colors">WORKS</a>
+                <a href="#about" class="hover:text-[var(--neon-blue)] transition-colors">ABOUT</a>
+                <a href="#contact" class="hover:text-[var(--neon-blue)] transition-colors">CONTACT</a>
+            </div>
+            <button class="md:hidden" onclick="toggleMenu()">
+                <i class="bi bi-list text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center relative">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl md:text-7xl font-['Orbitron'] cyber-glitch mb-8">VISUAL DESIGN<br>REDEFINED</h1>
+                <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto">Creating stunning digital experiences through innovative design and cutting-edge technology</p>
+                <a href="#works" class="cyber-border px-8 py-4 text-lg hover:bg-[var(--neon-blue)]/20 transition-colors">VIEW PORTFOLIO</a>
+            </div>
+        </section>
+
+        <!-- Works Section -->
+        <section id="works" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-5xl font-['Orbitron'] mb-12 cyber-glitch text-center">FEATURED WORKS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Cards -->
+                    <div class="cyber-border p-4 hover:scale-105 transition-transform cursor-pointer">
+                        <div class="aspect-video bg-gradient-to-r from-[var(--neon-blue)] to-[var(--neon-pink)] mb-4"></div>
+                        <h3 class="text-xl font-['Orbitron'] mb-2">Project Alpha</h3>
+                        <p>UI/UX Design • Brand Identity</p>
+                    </div>
+                    <div class="cyber-border p-4 hover:scale-105 transition-transform cursor-pointer">
+                        <div class="aspect-video bg-gradient-to-r from-[var(--neon-pink)] to-[var(--cyber-yellow)] mb-4"></div>
+                        <h3 class="text-xl font-['Orbitron'] mb-2">Project Beta</h3>
+                        <p>Web Design • Development</p>
+                    </div>
+                    <div class="cyber-border p-4 hover:scale-105 transition-transform cursor-pointer">
+                        <div class="aspect-video bg-gradient-to-r from-[var(--cyber-yellow)] to-[var(--neon-blue)] mb-4"></div>
+                        <h3 class="text-xl font-['Orbitron'] mb-2">Project Gamma</h3>
+                        <p>3D Design • Animation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-5xl font-['Orbitron'] mb-12 cyber-glitch text-center">GET IN TOUCH</h2>
+                <form class="max-w-2xl mx-auto">
+                    <div class="mb-6">
+                        <input type="text" placeholder="NAME" class="w-full bg-transparent cyber-border p-4">
+                    </div>
+                    <div class="mb-6">
+                        <input type="email" placeholder="EMAIL" class="w-full bg-transparent cyber-border p-4">
+                    </div>
+                    <div class="mb-6">
+                        <textarea placeholder="MESSAGE" rows="6" class="w-full bg-transparent cyber-border p-4"></textarea>
+                    </div>
+                    <button type="submit" class="cyber-border px-8 py-4 w-full hover:bg-[var(--neon-blue)]/20 transition-colors">SEND MESSAGE</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black/50 backdrop-blur-md py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2024 CYBER.DESIGN | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Three.js Background Animation
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('three-container').appendChild(renderer.domElement);
+
+        const geometry = new THREE.IcosahedronGeometry(1, 0);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0x00f3ff,
+            wireframe: true
+        });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive handling
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Mobile menu
+        function toggleMenu() {
+            const nav = document.querySelector('nav div div');
+            nav.classList.toggle('hidden');
+            nav.classList.toggle('flex');
+            nav.classList.toggle('flex-col');
+            nav.classList.toggle('absolute');
+            nav.classList.toggle('top-16');
+            nav.classList.toggle('left-0');
+            nav.classList.toggle('w-full');
+            nav.classList.toggle('bg-black/50');
+            nav.classList.toggle('backdrop-blur-md');
+            nav.classList.toggle('p-4');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
